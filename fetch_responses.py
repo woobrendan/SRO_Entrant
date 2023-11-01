@@ -4,19 +4,27 @@ import os
 
 load_dotenv()
 
-form_id = os.environ.get('FORM')
-token = os.environ.get('TOKEN')
+# Last upload - update with each get
+date = '2023-11-01T19:13:49.643Z'
 
-url = f'https://api.typeform.com/forms/{form_id}/responses'
+date_str = f'?since={date}'
+page_size = f'?page_size=100'
 
-headers = {
-    'Authorization': f'Bearer {token}'
-}
 
-response = requests.get(url, headers=headers)
+def fetch_responses():
+    form_id = os.environ.get('FORM')
+    token = os.environ.get('TOKEN')
 
-if response.status_code == 200:
-    data = response.json()
-    print(data)
-else:
-    print(response.status_code)
+    url = f'https://api.typeform.com/forms/{form_id}/responses'
+
+    headers = {
+        'Authorization': f'Bearer {token}'
+    }
+
+    response = requests.get(url, headers=headers)
+
+    if response.status_code == 200:
+        data = response.json()
+        return data['items']
+    else:
+        print('Error fetching TypeForm responses', response.status_code)
