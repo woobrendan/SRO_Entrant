@@ -1,19 +1,14 @@
 def getAnswerValue(answer):
     ans_type = answer['type']
-    if ans_type == 'text':
-        return answer['text']
 
     if ans_type == 'choice':
         return answer['choice']['label']
 
-    if ans_type == 'phone_number':
-        return answer['phone_number']
-
-    if ans_type == 'email':
-        return answer['email']
-
     if ans_type == 'boolean':
         return 'Yes' if answer['boolean'] else 'No'
+
+    # phone, email, text
+    return answer[ans_type]
 
 
 # Take in answers array from fetched response
