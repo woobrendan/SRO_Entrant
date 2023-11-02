@@ -31,5 +31,14 @@ headers = {
     'lOTS3iQkQB8y': 'Crew Chief First Name',
     'JmxVkIHn8bcG': 'Crew Chief Last Name',
     'kPWqIohZqJpX': 'Crew Chief Email',
-    'dPFyek6nmENk': 'Crew Chief Cell'
+    'dPFyek6nmENk': 'Crew Chief Cell',
+    'GefSkyJGJeaY': 'Team Manager First Name',
+    'MKtN5Qz3XZtq': 'Team Manager Last Name',
+    'liGvRZ25kY8F': 'Team Manager Email',
+    'EwUHxcy8cbOq': 'Team Manager Cell',
+    'jMLsSqMcowgJ': 'Has Marketing/PR Rep',
+    '2ft6nbuGOp33': 'Truck Driver First Name',
+    'wPqzta91f8N9': 'Truck Driver Last Name',
+    'X9NvIhhJnLjM': 'Truck Driver Cell',
+    'mP6QpRkzO92E': 'Truck Driver Email'
 }
