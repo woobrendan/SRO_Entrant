@@ -2,7 +2,13 @@ from sort_answers import getAnswerValue
 
 headers = {
     "CI2u1enwoqbZ": 'Team',
-    '1rK745G7gN0S': 'Season Type'
+    '1rK745G7gN0S': 'Season Type',
+    'FhYKXAVPkzaa': 'Entrant License Name',
+    '6r2CqolmpepU': 'Primary Contact First Name',
+    '4kIVm0yJCqFq': 'Primary Contact Last Name',
+    '9OF0lWZEpNuR': 'Primary Phone Number',
+    'xK89Tz19ICpG': 'Primary Email'
+
 }
 
 
@@ -18,4 +24,8 @@ def process_answer(answer):
 
 # Take in answers array from fetched response
 def processAnswerById(answers):
-    pass
+    entry = {}
+
+    for answer in answers:
+        val = process_answer(answer)
+        entry.update(val)
