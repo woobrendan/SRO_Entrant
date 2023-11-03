@@ -16,9 +16,12 @@ headers = {
     'IMEA0t0c9kyQ': 'Vehicle Make',
     'ASWurX5GTtnv': 'Vehicle Model',
     'pU2Jkm90w9Eq': 'Homologation Number',
+    'XNElqQKjsuNZ': 'Transponder Number',
     'Bw8p4QECsDvD': 'Series',
-    'qpIxQJlGsU8a': 'Class',
-    'pU2Jkm90w9Eq': 'Class',
+    'qpIxQJlGsU8a': 'Class',  # TC A
+    'MU33v01lFcm6': 'Class',    # GT A
+    'P78moOw8ctap': 'Class',  # GTWC
+    'b3OYPsZLzund': 'Class',  # GT4
     'zgosMYsLCGMP': '2023 Registered Number',
     'e1R9xecDplrr': 'Car # First Choice',
     'qx4hoS0Vg3qp': 'Car # Second Choice',
