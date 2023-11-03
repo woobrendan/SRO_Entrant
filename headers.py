@@ -24,7 +24,7 @@ headers = {
     'XNElqQKjsuNZ': 'Transponder Number',
     'Bw8p4QECsDvD': 'Series',
     'qpIxQJlGsU8a': 'Class',  # TC A
-    'MU33v01lFcm6': 'Class',    # GT A
+    '5IwbUAdTNi0d': 'Class',    # GT A
     'P78moOw8ctap': 'Class',  # GTWC
     'b3OYPsZLzund': 'Class',  # GT4
     'zgosMYsLCGMP': '2023 Registered Number',
