@@ -33,4 +33,4 @@ yarn-error.log*
 setting.json
 
 *.csv
-*.xslx
+*.xlsx
