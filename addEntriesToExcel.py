@@ -2,7 +2,7 @@ import openpyxl
 from fetch_responses import fetch_responses
 from Utility.headers import headers
 from answersToDict import processAllResponses
-from Utility.utility import copy_alignment, copy_border, copy_font
+from Utility.utility import copy_alignment, copy_border, copy_font, findFirstEmptyRow
 
 
 def addEntriesToExcel():
@@ -13,7 +13,8 @@ def addEntriesToExcel():
     entries = fetch_responses()
     all_entries = processAllResponses(entries)
 
-    first_empty_row = sheet.max_row + 1
+    # first_empty_row = sheet.max_row + 1
+    first_empty_row = findFirstEmptyRow(sheet)
     first_cell = sheet.cell(row=2, column=1)
 
     for entry in all_entries:
