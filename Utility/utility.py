@@ -18,3 +18,9 @@ def copy_border(border):
         left=border.left, right=border.right, top=border.top, bottom=border.bottom
     )
     return new_border
+
+
+def findFirstEmptyRow(sheet):
+    for cell in sheet["A"]:
+        if cell.value is None:
+            return cell.row
