@@ -8,17 +8,19 @@ import json
 def process_answer(answer):
     ans_id = answer['field']['id']
 
-    key = headers.get(ans_id, 'Find later')
+    key = headers.get(ans_id, '----Find later------')
     value = getAnswerValue(answer)
 
     return {key: value}
 
 
 # Take in answers array from fetched response. This is a single entrant report
-def processAnswersToDict(answers):
+def processAnswersToDict(response):
     entry = {}
+    entry['id'] = response['response_id']
+    entry['Submitted_at'] = response['submitted_at']
 
-    for answer in answers:
+    for answer in response['answers']:
         val = process_answer(answer)
         entry.update(val)
 
@@ -31,7 +33,7 @@ def processAllResponses(responses):
     all_entries = []
 
     for response in responses:
-        new_response = processAnswersToDict(response['answers'])
+        new_response = processAnswersToDict(response)
         all_entries.append(new_response)
 
     return all_entries
