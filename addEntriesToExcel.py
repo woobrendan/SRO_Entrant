@@ -6,14 +6,14 @@ from Utility.utility import copy_alignment, copy_border, copy_font, findFirstEmp
 
 
 def addEntriesToExcel():
-    wb = openpyxl.load_workbook('./2024 SRO Vehicle Registrations Test.xlsx')
+    wb = openpyxl.load_workbook('./2024 SRO Vehicle Registrations.xlsx')
 
     sheet = wb['Car Registrations']
 
     entries = fetch_responses()
     all_entries = processAllResponses(entries)
+    # add filter to check if entry id exists in the sheet already
 
-    # first_empty_row = sheet.max_row + 1
     first_empty_row = findFirstEmptyRow(sheet)
     first_cell = sheet.cell(row=2, column=1)
 
