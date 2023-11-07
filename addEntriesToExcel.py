@@ -4,13 +4,16 @@ from Utility.headers import headers
 from answersToDict import processAllResponses
 from Utility.utility import copy_alignment, copy_border, copy_font, findFirstEmptyRow
 
+# Last upload - update with each get
+date_str = '2023-11-07T22:17:09.613Z'
+
 
 def addEntriesToExcel():
     wb = openpyxl.load_workbook('./2024 SRO Vehicle Registrations.xlsx')
 
     sheet = wb['Car Registrations']
 
-    entries = fetch_responses()
+    entries = fetch_responses(date_str)
     all_entries = processAllResponses(entries)
     # add filter to check if entry id exists in the sheet already
 
