@@ -92,8 +92,9 @@ headers = [
     'Homologation Number',
     'Transponder Number',
     'Series',
-    'Class'
+    'Class',
     '2023 Registered Number',
+    '2024 Confirmed Number',
     'Car # First Choice',
     'Car # Second Choice',
     'Car # Third Choice',
