@@ -8,15 +8,17 @@ from Utility.utility import copy_alignment, copy_border, copy_font, findFirstEmp
 date_str = '2023-11-07T22:17:09.613Z'
 
 
-def addEntriesToExcel():
-    wb = openpyxl.load_workbook('./2024 SRO Vehicle Registrations.xlsx')
+def addEntriesToExcel(series):
+    excel_doc = 'GR Cup' if series == 'GR' else 'SRO'
+    wb = openpyxl.load_workbook(
+        f'.templates/2024 {excel_doc} Vehicle Registrations.xlsx')
 
     sheet = wb['Car Registrations']
 
-    entries = fetch_responses(date_str)
+    entries = fetch_responses(date_str, series=None)
     all_entries = processAllResponses(entries)
-    # add filter to check if entry id exists in the sheet already
 
+    # add filter to check if entry id exists in the sheet already
     first_empty_row = findFirstEmptyRow(sheet)
     first_cell = sheet.cell(row=2, column=1)
 
