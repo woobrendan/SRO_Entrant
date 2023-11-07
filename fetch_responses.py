@@ -7,11 +7,13 @@ load_dotenv()
 page_size = f'?page_size=100'
 
 
-def fetch_responses(date_str):
-    form_id = os.environ.get('FORM')
+def fetch_responses(date_str, series):
+    form_str = 'GR_FORM' if series == 'GR' else 'SRO_FORM'
+    form_id = os.environ.get(form_str)
     token = os.environ.get('TOKEN')
 
-    url = f'https://api.typeform.com/forms/{form_id}/responses?since={date_str}'
+    # url = f'https://api.typeform.com/forms/{form_id}/responses?since={date_str}'
+    url = f'https://api.typeform.com/forms/{form_id}/'
 
     headers = {
         'Authorization': f'Bearer {token}'
