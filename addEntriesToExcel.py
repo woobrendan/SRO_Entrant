@@ -1,6 +1,6 @@
 import openpyxl
 from fetch_responses import fetch_responses
-from Utility.headers import headers
+from Utility import headers, gr_headers
 from answersToDict import processAllResponses
 from Utility.utility import copy_alignment, copy_border, copy_font, findFirstEmptyRow
 
@@ -11,19 +11,21 @@ date_str = '2023-11-07T22:17:09.613Z'
 def addEntriesToExcel(series):
     excel_doc = 'GR Cup' if series == 'GR' else 'SRO'
     wb = openpyxl.load_workbook(
-        f'.templates/2024 {excel_doc} Vehicle Registrations.xlsx')
+        f'./templates/2024 {excel_doc} Vehicle Registrations.xlsx')
 
     sheet = wb['Car Registrations']
 
-    entries = fetch_responses(date_str, series=None)
-    all_entries = processAllResponses(entries)
+    entries = fetch_responses(date_str, series)
+    all_entries = processAllResponses(entries, series)
 
     # add filter to check if entry id exists in the sheet already
     first_empty_row = findFirstEmptyRow(sheet)
     first_cell = sheet.cell(row=2, column=1)
 
+    header_title = gr_headers.headers if series == 'GR' else headers.headers
+
     for entry in all_entries:
-        for i, header in enumerate(headers, start=1):
+        for i, header in enumerate(header_title, start=1):
             new_cell = sheet.cell(row=first_empty_row, column=i)
             new_cell.value = entry.get(header, '')
 
@@ -34,8 +36,8 @@ def addEntriesToExcel(series):
 
         first_empty_row += 1
 
-    wb.save('./Updated/2024 SRO Vehicle Registrations Out.xlsx')
+    wb.save(f'./Updated/2024 {excel_doc} Vehicle Registrations Out.xlsx')
 
 
 if __name__ == '__main__':
-    addEntriesToExcel()
+    addEntriesToExcel('GR')
