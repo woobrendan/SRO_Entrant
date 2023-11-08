@@ -12,8 +12,8 @@ def fetch_responses(date_str, series):
     form_id = os.environ.get(form_str)
     token = os.environ.get('TOKEN')
 
-    # url = f'https://api.typeform.com/forms/{form_id}/responses?since={date_str}'
-    url = f'https://api.typeform.com/forms/{form_id}/responses'
+    url = f'https://api.typeform.com/forms/{form_id}/responses?since={date_str}'
+    # url = f'https://api.typeform.com/forms/{form_id}/responses'
 
     headers = {
         'Authorization': f'Bearer {token}'
@@ -28,4 +28,11 @@ def fetch_responses(date_str, series):
 
 
 if __name__ == '__main__':
-    fetch_responses(date_str=None, series='GR')
+
+    # fetch GR
+    gr_date = '2023-11-02T20:29:32Z'
+    fetch_responses(date_str=gr_date, series='GR')
+
+    # fetch SRO
+    # sro_date = '2023-11-01T22:31:49Z'
+    # fetch_responses(sro_date, series=None)
