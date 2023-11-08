@@ -13,12 +13,11 @@ def fetch_responses(date_str, series):
     token = os.environ.get('TOKEN')
 
     # url = f'https://api.typeform.com/forms/{form_id}/responses?since={date_str}'
-    url = f'https://api.typeform.com/forms/{form_id}/'
+    url = f'https://api.typeform.com/forms/{form_id}/responses'
 
     headers = {
         'Authorization': f'Bearer {token}'
     }
-
     response = requests.get(url, headers=headers)
 
     if response.status_code == 200:
@@ -26,3 +25,7 @@ def fetch_responses(date_str, series):
         return data['items']
     else:
         print('Error fetching TypeForm responses', response.status_code)
+
+
+if __name__ == '__main__':
+    fetch_responses(date_str=None, series='GR')
