@@ -2,7 +2,7 @@ import openpyxl
 from fetch_responses import fetch_responses
 from Utility import headers, gr_headers
 from answersToDict import processAllResponses
-from Utility.utility import copy_alignment, copy_border, copy_font, findFirstEmptyRow
+from Utility.utility import copy_alignment, copy_border, copy_font, findFirstEmptyRow, getAllId
 
 
 def addEntriesToExcel(date_str, series):
@@ -20,8 +20,11 @@ def addEntriesToExcel(date_str, series):
     first_cell = sheet.cell(row=2, column=1)
 
     header_title = gr_headers.headers if series == 'GR' else headers.headers
+    existing_ids = getAllId(sheet, series)
 
     for entry in all_entries:
+        if entry['id'] in existing_ids:
+            continue
         for i, header in enumerate(header_title, start=1):
             new_cell = sheet.cell(row=first_empty_row, column=i)
             new_cell.value = entry.get(header, '')
@@ -43,5 +46,5 @@ if __name__ == '__main__':
     # addEntriesToExcel(date_str=gr_date, series='GR')
 
     # fetch SRO
-    sro_date = '2023-11-07T18:11:35Z'
+    sro_date = '2023-11-07T18:11:33Z'
     addEntriesToExcel(sro_date, series='SRO')
