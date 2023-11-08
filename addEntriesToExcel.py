@@ -4,11 +4,8 @@ from Utility import headers, gr_headers
 from answersToDict import processAllResponses
 from Utility.utility import copy_alignment, copy_border, copy_font, findFirstEmptyRow
 
-# Last upload - update with each get
-date_str = '2023-11-07T22:17:09.613Z'
 
-
-def addEntriesToExcel(series):
+def addEntriesToExcel(date_str, series):
     excel_doc = 'GR Cup' if series == 'GR' else 'SRO'
     wb = openpyxl.load_workbook(
         f'./templates/2024 {excel_doc} Vehicle Registrations.xlsx')
@@ -40,4 +37,11 @@ def addEntriesToExcel(series):
 
 
 if __name__ == '__main__':
-    addEntriesToExcel('GR')
+
+    # fetch GR
+    # gr_date = '2023-11-02T20:29:32Z'
+    # addEntriesToExcel(date_str=gr_date, series='GR')
+
+    # fetch SRO
+    sro_date = '2023-11-07T18:11:35Z'
+    addEntriesToExcel(sro_date, series='SRO')
