@@ -70,7 +70,7 @@ headers = [
     'Shipping Zip',
     'Shipping Country',
     'Vehicle Model Year',
-    'Race Car Identifier (RCI)'
+    'Race Car Identifier (RCI)',
     'Transponder Number',
     '2023 Registered Number',
     '2024 Confirmed Number',
