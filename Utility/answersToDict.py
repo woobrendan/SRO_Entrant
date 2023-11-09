@@ -1,6 +1,6 @@
 from Utility.sortFuncs import getAnswerValue
 from Utility import headers, gr_headers
-from fetch_responses import fetch_responses
+from Utility.fetch_responses import fetch_responses
 import json
 
 

@@ -1,5 +1,5 @@
 import openpyxl
-from fetch_responses import fetch_responses
+from Utility.fetch_responses import fetch_responses
 from Utility.answersToDict import processAllResponses
 from Utility.addToSheet import addToSheet
 
