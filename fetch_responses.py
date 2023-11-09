@@ -21,6 +21,11 @@ def fetch_responses(date_str, series):
 
     if response.status_code == 200:
         data = response.json()
+
+        if data['total_items'] == 0:
+            print(
+                f'Fetch successful, no new entries from {form_str} since given date')
+
         return data['items']
     else:
         print('Error fetching TypeForm responses', response.status_code)
