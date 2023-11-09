@@ -10,9 +10,13 @@ def addToSheet(sheet, series, all_entries):
     header_title = gr_headers.headers if series == 'GR' else headers.headers
     existing_ids = getAllId(sheet, series)
 
+    count = 0
+
     for entry in all_entries:
         if entry['id'] in existing_ids:
             continue
+        count += 1
+
         for i, header in enumerate(header_title, start=1):
             new_cell = sheet.cell(row=first_empty_row, column=i)
             new_cell.value = entry.get(header, '')
@@ -23,3 +27,5 @@ def addToSheet(sheet, series, all_entries):
             new_cell.border = copy_border(first_cell.border)
 
         first_empty_row += 1
+
+    return count
