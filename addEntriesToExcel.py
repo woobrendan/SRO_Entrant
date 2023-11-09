@@ -17,7 +17,8 @@ def addEntriesToExcel(date_str, series):
         return
     all_entries = processAllResponses(entries, series)
 
-    addToSheet(sheet, series, all_entries)
+    count = addToSheet(sheet, series, all_entries)
+    print(f'{count} entries have been added to {excel_doc} document')
 
     wb.save(f'./Updated/2024 {excel_doc} Vehicle Registrations Out.xlsx')
 
