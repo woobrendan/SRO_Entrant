@@ -29,7 +29,9 @@ def findFirstEmptyRow(sheet):
 def getAllId(sheet, series):
     ids = []
 
-    column = sheet['BM']
+    column_id = 'BM' if series == 'SRO' else 'AZ'
+
+    column = sheet[column_id]
 
     for cell in column[1:]:
         if cell.value is not None:
