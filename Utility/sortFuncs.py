@@ -9,3 +9,26 @@ def getAnswerValue(answer):
 
     # phone, email, text, number
     return answer[ans_type]
+
+
+# takes in array of proccessed entries, sorts for number tracking
+def sortEntryNumberTracking(series, all_entries):
+    entries = {}
+
+    if series == 'SRO':
+        entries['GT Nums'] = []
+        entries['TC Nums'] = []
+    else:
+        entries['GR Nums'] = []
+
+    for entry in all_entries:
+        if series == 'GR':
+            entries['GR Nums'].append(entry)
+
+        elif entry['Series'] == 'TC America':
+            entries['TC Nums'].append(entry)
+
+        else:
+            entries['GT Nums'].append(entry)
+
+    return entries
