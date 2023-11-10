@@ -1,4 +1,4 @@
-from Utility.utility import findFirstEmptyRow, getAllId, copy_alignment, copy_border, copy_font
+from Utility.utility import findFirstEmptyRow, copy_alignment, copy_border, copy_font
 from Utility import headers, gr_headers
 
 
@@ -8,13 +8,10 @@ def addToSheet(sheet, series, all_entries):
     first_cell = sheet.cell(row=2, column=1)
 
     header_title = gr_headers.headers if series == 'GR' else headers.headers
-    existing_ids = getAllId(sheet, series)
 
     count = 0
 
     for entry in all_entries:
-        if entry['id'] in existing_ids:
-            continue
         count += 1
 
         for i, header in enumerate(header_title, start=1):
