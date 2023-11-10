@@ -1,3 +1,4 @@
+from datetime import datetime
 import openpyxl
 
 
@@ -40,3 +41,25 @@ def getAllId(sheet, series):
             break  # exit loop when cell is empty
 
     return ids
+
+
+def getMostRecentDate(sheet, series):
+    submit_dates = []
+
+    column_id = 'BA' if series == 'GR' else 'BN'
+
+    column = sheet[column_id]
+
+    for cell in column[1:]:
+        if cell.value is not None:
+            submit_dates.append(cell.value)
+        else:
+            break
+
+    # convert each date string into date obj, get max then return as str
+    date_objs = [datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
+                 for date in submit_dates]
+
+    most_recent = max(date_objs)
+
+    return most_recent.strftime('%Y-%m-%dT%H:%M:%SZ')
