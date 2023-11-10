@@ -1,18 +1,27 @@
+from Utility.gr_headers import num_headers
+from Utility.sortFuncs import sortEntryNumberTracking
+from Utility.utility import findFirstEmptyRow, copy_alignment, copy_border, copy_font
+
+
 def addCarNums(wb, series, all_entries):
-    entries = {}
+    entryDict = sortEntryNumberTracking(series, all_entries)
 
-    if series == 'SRO':
-        entries['GT Nums'] = []
-        entries['TC Nums'] = []
-    else:
-        entries['GR Nums'] = []
+    if series == 'GR':
+        sheet = wb['GR Nums']
 
-    for entry in all_entries:
-        if series == 'GR':
-            entries['GR Nums'].append(entry)
+        entries = entryDict['GR Nums']
 
-        elif entry['Series'] == 'TC America':
-            entries['TC Nums'].append(entry)
+        first_empty_row = findFirstEmptyRow(sheet)
+        first_cell = sheet.cell(row=2, column=1)
 
-        else:
-            entries['GT Nums'].append(entry)
+        for entry in entries:
+            for i, header in enumerate(num_headers, start=1):
+                new_cell = sheet.cell(row=first_empty_row, column=i)
+                new_cell.value = entry.get(header, '')
+
+                # set formatting of cell
+                new_cell.font = copy_font(first_cell.font)
+                new_cell.alignment = copy_alignment(first_cell.alignment)
+                new_cell.border = copy_border(first_cell.border)
+
+            first_empty_row += 1
