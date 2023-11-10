@@ -1,7 +1,7 @@
 import openpyxl
 from Utility.fetch_responses import fetch_responses
 from Utility.answersToDict import processAllResponses
-from Utility.addToSheet import addToSheet
+from Utility.addToCarReg import addToCarReg
 from Utility.sortFuncs import filterEntriesById
 from Utility.utility import getAllId
 
@@ -22,7 +22,7 @@ def addEntriesToExcel(date_str, series):
     all_entries = processAllResponses(entries, series)
     filtered_entries = filterEntriesById(existing_ids, all_entries)
 
-    count = addToSheet(sheet, series, filtered_entries)
+    count = addToCarReg(sheet, series, filtered_entries)
     print(f'{count} entries have been added to {excel_doc} document')
 
     wb.save(f'./Updated/2024 {excel_doc} Vehicle Registrations Out.xlsx')

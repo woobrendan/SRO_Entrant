@@ -2,7 +2,7 @@ from Utility.utility import findFirstEmptyRow, copy_alignment, copy_border, copy
 from Utility import headers, gr_headers
 
 
-def addToSheet(sheet, series, all_entries):
+def addToCarReg(sheet, series, all_entries):
     # add filter to check if entry id exists in the sheet already
     first_empty_row = findFirstEmptyRow(sheet)
     first_cell = sheet.cell(row=2, column=1)
