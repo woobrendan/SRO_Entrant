@@ -2,6 +2,8 @@ import openpyxl
 from Utility.fetch_responses import fetch_responses
 from Utility.answersToDict import processAllResponses
 from Utility.addToSheet import addToSheet
+from Utility.sortFuncs import filterEntriesById
+from Utility.utility import getAllId
 
 
 def addEntriesToExcel(date_str, series):
@@ -11,13 +13,16 @@ def addEntriesToExcel(date_str, series):
 
     sheet = wb['Car Registrations']
 
-    # Fetch respones exit if no new respones, if responses process them to own dict
+    existing_ids = getAllId(sheet, series)
+
+    # Fetch respones exit if no new respones, if responses process them to own dict, then filter removing duplicate ids
     entries = fetch_responses(date_str, series)
     if len(entries) == 0:
         return
     all_entries = processAllResponses(entries, series)
+    filtered_entries = filterEntriesById(existing_ids, all_entries)
 
-    count = addToSheet(sheet, series, all_entries)
+    count = addToSheet(sheet, series, filtered_entries)
     print(f'{count} entries have been added to {excel_doc} document')
 
     wb.save(f'./Updated/2024 {excel_doc} Vehicle Registrations Out.xlsx')
