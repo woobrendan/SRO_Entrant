@@ -135,3 +135,16 @@ headers = [
     'id',
     'Submitted_at'
 ]
+
+num_headers = [
+    'Team',
+    'Series'
+    '2024 Confirmed Number',
+    'Car # First Choice',
+    'Car # Second Choice',
+    'Car # Third Choice',
+    'Driver 1 First Name',
+    'Driver 1 Last Name',
+    'has RSP',
+    'Submitted_at'
+]
