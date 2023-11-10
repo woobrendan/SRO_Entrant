@@ -32,3 +32,11 @@ def sortEntryNumberTracking(series, all_entries):
             entries['GT Nums'].append(entry)
 
     return entries
+
+
+def unique_id(entry, id_list):
+    return entry['id'] not in id_list
+
+
+def filterEntriesById(id_list, all_entries):
+    return filter(lambda entry: unique_id(entry, id_list), all_entries)
