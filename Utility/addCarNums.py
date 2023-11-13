@@ -1,6 +1,7 @@
 from Utility.gr_headers import num_headers
+from Utility.headers import sro_num_headers
 from Utility.sortFuncs import sortEntryNumberTracking
-from Utility.utility import findFirstEmptyRow, copy_alignment, copy_border, copy_font
+from Utility.utility import addValuesToExcel
 
 
 def addCarNums(wb, series, all_entries):
@@ -11,17 +12,11 @@ def addCarNums(wb, series, all_entries):
 
         entries = entryDict['GR Nums']
 
-        first_empty_row = findFirstEmptyRow(sheet)
-        first_cell = sheet.cell(row=2, column=1)
+        addValuesToExcel(num_headers, entries, sheet)
 
-        for entry in entries:
-            for i, header in enumerate(num_headers, start=1):
-                new_cell = sheet.cell(row=first_empty_row, column=i)
-                new_cell.value = entry.get(header, '')
+    # handle SRO number tracking
+    else:
+        for key, entries in entryDict.items():
+            sheet = wb[key]
 
-                # set formatting of cell
-                new_cell.font = copy_font(first_cell.font)
-                new_cell.alignment = copy_alignment(first_cell.alignment)
-                new_cell.border = copy_border(first_cell.border)
-
-            first_empty_row += 1
+            addValuesToExcel(sro_num_headers, entries, sheet)
