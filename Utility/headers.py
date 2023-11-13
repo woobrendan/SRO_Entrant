@@ -136,9 +136,9 @@ headers = [
     'Submitted_at'
 ]
 
-num_headers = [
+sro_num_headers = [
     'Team',
-    'Series'
+    'Series',
     '2024 Confirmed Number',
     'Car # First Choice',
     'Car # Second Choice',
