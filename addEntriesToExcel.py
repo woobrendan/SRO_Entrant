@@ -4,6 +4,7 @@ from Utility.answersToDict import processAllResponses
 from Utility.addToCarReg import addToCarReg
 from Utility.sortFuncs import filterEntriesById
 from Utility.utility import getAllId, getMostRecentDate
+from Utility.addCarNums import addCarNums
 
 
 def addEntriesToExcel(series):
@@ -25,7 +26,10 @@ def addEntriesToExcel(series):
     all_entries = processAllResponses(entries, series)
     filtered_entries = filterEntriesById(existing_ids, all_entries)
 
+    # with filtered entries, process to add to car reg, and number tracking
     count = addToCarReg(sheet, series, filtered_entries)
+    addCarNums(wb, series, filtered_entries)
+
     print(f'{count} entries have been added to {excel_doc} document')
 
     wb.save(f'./Updated/2024 {excel_doc} Vehicle Registrations Out.xlsx')
