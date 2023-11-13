@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 import openpyxl
 
 
@@ -61,6 +61,8 @@ def getMostRecentDate(sheet, series):
                  for date in submit_dates]
 
     most_recent = max(date_objs)
+
+    most_recent += timedelta(seconds=1)
 
     return most_recent.strftime('%Y-%m-%dT%H:%M:%SZ')
 
