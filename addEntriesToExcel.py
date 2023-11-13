@@ -38,7 +38,6 @@ def addEntriesToExcel(series):
 
 
 if __name__ == '__main__':
-
     # fetch GR
     addEntriesToExcel(series='GR')
 
