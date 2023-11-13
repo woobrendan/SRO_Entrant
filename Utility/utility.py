@@ -68,8 +68,11 @@ def getMostRecentDate(sheet, series):
 def addValuesToExcel(headers, entries, sheet):
     first_row = findFirstEmptyRow(sheet)
     first_cell = sheet.cell(row=2, column=1)
+    count = 0
 
     for entry in entries:
+        count += 1
+
         for i, header in enumerate(headers, start=1):
             new_cell = sheet.cell(row=first_row, column=i)
             new_cell.value = entry.get(header, '')
@@ -80,3 +83,5 @@ def addValuesToExcel(headers, entries, sheet):
             new_cell.border = copy_border(first_cell.border)
 
         first_row += 1
+
+    return count
