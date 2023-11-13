@@ -1,10 +1,10 @@
 import openpyxl
 from Utility.fetch_responses import fetch_responses
 from Utility.answersToDict import processAllResponses
-from Utility.addToCarReg import addToCarReg
 from Utility.sortFuncs import filterEntriesById
-from Utility.utility import getAllId, getMostRecentDate
+from Utility.utility import getAllId, getMostRecentDate, addValuesToExcel
 from Utility.addCarNums import addCarNums
+from Utility import headers, gr_headers
 
 
 def addEntriesToExcel(series):
@@ -27,7 +27,9 @@ def addEntriesToExcel(series):
     filtered_entries = filterEntriesById(existing_ids, all_entries)
 
     # with filtered entries, process to add to car reg, and number tracking
-    count = addToCarReg(sheet, series, filtered_entries)
+    header_title = gr_headers.headers if series == 'GR' else headers.headers
+
+    count = addValuesToExcel(header_title, filtered_entries, sheet)
     addCarNums(wb, series, filtered_entries)
 
     print(f'{count} entries have been added to {excel_doc} document')
