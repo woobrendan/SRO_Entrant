@@ -39,4 +39,4 @@ def unique_id(entry, id_list):
 
 
 def filterEntriesById(id_list, all_entries):
-    return filter(lambda entry: unique_id(entry, id_list), all_entries)
+    return list(filter(lambda entry: unique_id(entry, id_list), all_entries))
