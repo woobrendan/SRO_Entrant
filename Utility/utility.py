@@ -79,8 +79,9 @@ def addValuesToExcel(headers, entries, sheet):
             new_cell = sheet.cell(row=first_row, column=i)
             val = entry.get(header, '')
 
-            if header in ['Car # First Choice',  'Car # Second Choice', 'Car # Third Choice']:
-                val = int(val)
+            if header in ['Car # First Choice',  'Car # Second Choice', 'Car # Third Choice', '2023 Registered Number']:
+                if not val.startswith('0'):
+                    val = int(val)
 
             new_cell.value = val
 
