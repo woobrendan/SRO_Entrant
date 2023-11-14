@@ -77,7 +77,12 @@ def addValuesToExcel(headers, entries, sheet):
 
         for i, header in enumerate(headers, start=1):
             new_cell = sheet.cell(row=first_row, column=i)
-            new_cell.value = entry.get(header, '')
+            val = entry.get(header, '')
+
+            if header in ['Car # First Choice',  'Car # Second Choice', 'Car # Third Choice']:
+                val = int(val)
+
+            new_cell.value = val
 
             # set formatting of cell
             new_cell.font = copy_font(first_cell.font)
