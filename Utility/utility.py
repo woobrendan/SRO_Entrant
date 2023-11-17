@@ -30,7 +30,7 @@ def findFirstEmptyRow(sheet):
 def getAllId(sheet, series):
     ids = []
 
-    column_id = 'BM' if series == 'SRO' else 'AZ'
+    column_id = 'AZ' if series == 'GR' else 'BM'
 
     column = sheet[column_id]
 
@@ -80,7 +80,7 @@ def addValuesToExcel(headers, entries, sheet):
             val = entry.get(header, '')
 
             if header in ['Car # First Choice',  'Car # Second Choice', 'Car # Third Choice', '2023 Registered Number']:
-                if not val.startswith('0'):
+                if not val.startswith('0') and val:
                     val = int(val)
 
             new_cell.value = val
