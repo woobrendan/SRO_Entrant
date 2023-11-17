@@ -34,7 +34,7 @@ def addEntriesToExcel(series):
 
     print(f'{count} entries have been added to {excel_doc} document')
 
-    wb.save(f'./Updated/2024 {excel_doc} Vehicle Registrations Out.xlsx')
+    wb.save(f'../2024 {excel_doc} Vehicle Registrations Latest.xlsx')
 
 
 if __name__ == '__main__':
