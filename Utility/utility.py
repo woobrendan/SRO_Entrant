@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+from re import sub
 import openpyxl
 
 
@@ -56,15 +57,16 @@ def getMostRecentDate(sheet, series):
         else:
             break
 
-    # convert each date string into date obj, get max then return as str
-    date_objs = [datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
-                 for date in submit_dates]
+    if submit_dates:
+        # convert each date string into date obj, get max then return as str
+        date_objs = [datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
+                    for date in submit_dates]
 
-    most_recent = max(date_objs)
+        most_recent = max(date_objs)
 
-    most_recent += timedelta(seconds=1)
+        most_recent += timedelta(seconds=1)
 
-    return most_recent.strftime('%Y-%m-%dT%H:%M:%SZ')
+        return most_recent.strftime('%Y-%m-%dT%H:%M:%SZ')
 
 
 def addValuesToExcel(headers, entries, sheet):
