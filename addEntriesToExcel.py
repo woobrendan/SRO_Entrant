@@ -10,7 +10,7 @@ from Utility import headers, gr_headers
 def addEntriesToExcel(series):
     excel_doc = 'GR Cup' if series == 'GR' else 'SRO'
     wb = openpyxl.load_workbook(
-        f'./templates/2024 {excel_doc} Vehicle Registrations.xlsx')
+        f'../2024 {excel_doc} Vehicle Registrations.xlsx')
 
     sheet = wb['Car Registrations']
 
