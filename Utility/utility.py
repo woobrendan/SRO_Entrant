@@ -60,7 +60,7 @@ def getMostRecentDate(sheet, series):
     if submit_dates:
         # convert each date string into date obj, get max then return as str
         date_objs = [datetime.strptime(date, '%Y-%m-%dT%H:%M:%SZ')
-                    for date in submit_dates]
+                     for date in submit_dates]
 
         most_recent = max(date_objs)
 
@@ -82,7 +82,7 @@ def addValuesToExcel(headers, entries, sheet):
             val = entry.get(header, '')
 
             if header in ['Car # First Choice',  'Car # Second Choice', 'Car # Third Choice', '2023 Registered Number']:
-                if not val.startswith('0') and val:
+                if not val.startswith('0') and val.isdigit():
                     val = int(val)
 
             new_cell.value = val
