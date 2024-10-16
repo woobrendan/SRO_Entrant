@@ -11,8 +11,10 @@ def fetch_responses(date_str, series):
     form_str = 'GR_FORM' if series == 'GR' else 'SRO_FORM'
     form_id = os.environ.get(form_str)
     token = os.environ.get('TOKEN')
+    sro_form_str = os.environ.get('SRO_2025')
 
-    url = f'https://api.typeform.com/forms/{form_id}/responses?since={date_str}'
+    # url = f'https://api.typeform.com/forms/{sro_form_str}/responses?since={date_str}'
+    url = f'https://api.typeform.com/forms/{sro_form_str}/responses'
 
     headers = {
         'Authorization': f'Bearer {token}'
