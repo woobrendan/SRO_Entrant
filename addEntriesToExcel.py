@@ -12,11 +12,8 @@ def addEntriesToExcel(series):
     excel_doc = 'GR Cup' if series == 'GR' else 'SRO'
     current_year = datetime.now().year
 
-    wb = openpyxl.load_workbook(f'./2025/ 2025 {excel_doc} Vehicle Registrations.xlsx')
-
-
-    # wb = openpyxl.load_workbook(
-    #     f'../2024 {excel_doc} Vehicle Registrations.xlsx')
+    # wb = openpyxl.load_workbook(f'./{current_year}/2025 {excel_doc} Vehicle Registrations.xlsx')
+    wb = openpyxl.load_workbook(f'../2025/2025 SRO Vehicle Registrations.xlsx')
 
     sheet = wb['Car Registrations']
 
@@ -40,12 +37,12 @@ def addEntriesToExcel(series):
 
     print(f'{count} entries have been added to {excel_doc} document')
 
-    wb.save(f'../2024 {excel_doc} Vehicle Registrations Latest.xlsx')
+    wb.save(f'../2025/2025 SRO Vehicle Registrations Latest.xlsx')
 
 
 if __name__ == '__main__':
     # fetch GR
-    addEntriesToExcel(series='GR')
+    # addEntriesToExcel(series='GR')
 
     # fetch SRO
     addEntriesToExcel(series='SRO')
