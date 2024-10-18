@@ -22,7 +22,7 @@ def sortEntryNumberTracking(series, all_entries):
         entries['GR Nums'] = []
 
     for entry in all_entries:
-        if series == 'GR':
+        if series == 'GR Cup':
             entries['GR Nums'].append(entry)
 
         elif entry['Series'] == 'TC America':
