@@ -7,7 +7,7 @@ from Utility.utility import addValuesToExcel
 def addCarNums(wb, series, all_entries):
     entryDict = sortEntryNumberTracking(series, all_entries)
 
-    if series == 'GR':
+    if series == 'GR Cup':
         sheet = wb['GR Nums']
 
         entries = entryDict['GR Nums']
