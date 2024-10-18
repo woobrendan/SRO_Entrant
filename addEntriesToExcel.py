@@ -7,42 +7,43 @@ from Utility.utility import getAllId, getMostRecentDate, addValuesToExcel
 from Utility.addCarNums import addCarNums
 from Utility import headers, gr_headers
 
+def addEntriesToExcel():
+    seriesList = ['SRO', "GR Cup"] # add in McLaren
+    wb = openpyxl.load_workbook(f'../2025/2025 Vehicle Registrations.xlsx')
 
-def addEntriesToExcel(series):
-    excel_doc = 'GR Cup' if series == 'GR' else 'SRO'
-    current_year = datetime.now().year
+    for series in seriesList:
+        sheet = wb[series]
 
-    # wb = openpyxl.load_workbook(f'./{current_year}/2025 {excel_doc} Vehicle Registrations.xlsx')
-    wb = openpyxl.load_workbook(f'../2025/2025 SRO Vehicle Registrations.xlsx')
+        # Fetch respones exit if no new respones, if responses process them to own dict, then filter removing duplicate ids
+        recent_date = getMostRecentDate(sheet, series)
+        entries = fetch_responses(recent_date, series)
 
-    sheet = wb['Car Registrations']
+        if len(entries) == 0:
+            return
 
-    recent_date = getMostRecentDate(sheet, series)
-    existing_ids = getAllId(sheet, series)
+        # Take all entries, covnert answers to dicts, filter
+        all_entries = processAllResponses(entries, series)
+        existing_ids = getAllId(sheet, series)
+        filtered_entries = filterEntriesById(existing_ids, all_entries)
 
-    # Fetch respones exit if no new respones, if responses process them to own dict, then filter removing duplicate ids
-    entries = fetch_responses(recent_date, series)
 
-    if len(entries) == 0:
-        return
+        #### Handle Numbers Tabs######
 
-    all_entries = processAllResponses(entries, series)
-    filtered_entries = filterEntriesById(existing_ids, all_entries)
+        # with filtered entries, process to add to car reg, and number tracking
+        if series == 'GR Cup':
+            header_title = gr_headers.headers
+        # elif series == 'McLaren':
+        #     header_title = mclaren_headers.headers
+        else:
+            header_title = headers.headers
 
-    # with filtered entries, process to add to car reg, and number tracking
-    header_title = gr_headers.headers if series == 'GR' else headers.headers
+        count = addValuesToExcel(header_title, filtered_entries, sheet)
+        addCarNums(wb, series, filtered_entries)
 
-    count = addValuesToExcel(header_title, filtered_entries, sheet)
-    addCarNums(wb, series, filtered_entries)
+        print(f'{count} entries have been added to {series} document')
 
-    print(f'{count} entries have been added to {excel_doc} document')
-
-    wb.save(f'../2025/2025 SRO Vehicle Registrations Latest.xlsx')
+    wb.save(f'../2025/2025 Vehicle Registrations Latest.xlsx')
 
 
 if __name__ == '__main__':
-    # fetch GR
-    # addEntriesToExcel(series='GR')
-
-    # fetch SRO
-    addEntriesToExcel(series='SRO')
+    addEntriesToExcel()
