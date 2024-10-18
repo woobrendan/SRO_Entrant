@@ -31,7 +31,12 @@ def findFirstEmptyRow(sheet):
 def getAllId(sheet, series):
     ids = []
 
-    column_id = 'AZ' if series == 'GR' else 'BM'
+    if series == 'GR Cup':
+        column_id = 'BA'
+    # elif series == 'McLaren':
+    #     column_id = mclaren_headers.headers
+    else:
+        column_id = 'BL'
 
     column = sheet[column_id]
 
@@ -47,7 +52,12 @@ def getAllId(sheet, series):
 def getMostRecentDate(sheet, series):
     submit_dates = []
 
-    column_id = 'BA' if series == 'GR' else 'BN'
+    if series == 'GR Cup':
+        column_id = 'BB'
+    # elif series == 'McLaren':
+    #     column_id = mclaren_headers.headers
+    else:
+        column_id = 'BM'
 
     column = sheet[column_id]
 
