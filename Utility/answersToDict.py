@@ -7,7 +7,12 @@ import json
 # Process Individual Answer object
 def process_answer(answer, series):
     ans_id = answer['field']['id']
-    header_vals = gr_headers.header_ids if series == 'GR' else headers.header_ids
+    if series == 'GR Cup':
+        header_vals = gr_headers.header_ids
+    elif series == 'McLaren':
+        pass
+    else:
+        header_vals = headers.header_ids    
 
     key = header_vals.get(ans_id, '----Find later------')
     value = getAnswerValue(answer)
