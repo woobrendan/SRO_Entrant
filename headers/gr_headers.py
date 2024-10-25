@@ -109,7 +109,7 @@ headers = [
     'Submitted_at'
 ]
 
-num_headers = [
+gr_num_headers = [
     'Team',
     '2024 Confirmed Number',
     'Car # First Choice',
