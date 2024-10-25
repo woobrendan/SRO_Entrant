@@ -1,8 +1,7 @@
 from Utility.sortFuncs import getAnswerValue
-from Utility import headers, gr_headers
+from headers import gr_headers, headers, mcl_headers
 from Utility.fetch_responses import fetch_responses
 import json
-
 
 # Process Individual Answer object
 def process_answer(answer, series):
@@ -10,7 +9,7 @@ def process_answer(answer, series):
     if series == 'GR Cup':
         header_vals = gr_headers.header_ids
     elif series == 'McLaren':
-        pass
+        header_vals = mcl_headers.header_ids
     else:
         header_vals = headers.header_ids    
 
