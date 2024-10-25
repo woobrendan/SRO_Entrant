@@ -95,7 +95,7 @@ headers = [
     'Driver 1 Email',
     'Driver 1 Cell',
     'Driver 1 FIA Rating',
-    'Has Second Driver',
+    'Has Second Driver?',
     'Driver 2 First Name',
     'Driver 2 Last Name',
     'Driver 2 Nationality',
