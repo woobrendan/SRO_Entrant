@@ -15,17 +15,26 @@ def getAnswerValue(answer):
 def sortEntryNumberTracking(series, all_entries):
     entries = {}
 
+    ## Create key in entries object for each series numbers
     if series == 'SRO':
         entries['GT Nums'] = []
         entries['TC Nums'] = []
-    else:
+
+    if series == 'GR Cup':
         entries['GR Nums'] = []
 
+    if series == 'McLaren':
+        entries['MCL Nums'] = []
+
+    ## loop through the entry array and place numbers in approproate series
     for entry in all_entries:
         if series == 'GR Cup':
             entries['GR Nums'].append(entry)
 
-        elif entry['Series'] == 'TC America':
+        if series == 'McLaren':
+            entries['MCL Nums'].append(entry)
+
+        if entry['Series'] == 'TC America':
             entries['TC Nums'].append(entry)
 
         else:
