@@ -5,10 +5,11 @@ from Utility.answersToDict import processAllResponses
 from Utility.sortFuncs import filterEntriesById
 from Utility.utility import getAllId, getMostRecentDate, addValuesToExcel
 from Utility.addCarNums import addCarNums
-from Utility import headers, gr_headers
+from headers import gr_headers, headers, mcl_headers
+
 
 def addEntriesToExcel():
-    seriesList = ['SRO', "GR Cup"] # add in McLaren
+    seriesList = ['SRO', "GR Cup", "McLaren"] # add in McLaren
     wb = openpyxl.load_workbook(f'../2025/2025 Vehicle Registrations.xlsx')
 
     for series in seriesList:
@@ -32,8 +33,8 @@ def addEntriesToExcel():
         # with filtered entries, process to add to car reg, and number tracking
         if series == 'GR Cup':
             header_title = gr_headers.headers
-        # elif series == 'McLaren':
-        #     header_title = mclaren_headers.headers
+        elif series == 'McLaren':
+            header_title = mcl_headers.headers
         else:
             header_title = headers.headers
 
