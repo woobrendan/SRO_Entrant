@@ -19,13 +19,15 @@ def fetch_responses(date_str, series):
     form_id = os.environ.get(form_str)
     token = os.environ.get('TOKEN')
 
-    # url = f'https://api.typeform.com/forms/{form_id}/responses?since={date_str}'
+    dateUrl = f'https://api.typeform.com/forms/{form_id}/responses?since={date_str}'
     url = f'https://api.typeform.com/forms/{form_id}/responses'
+
+    usableURL = dateUrl if date_str else url
 
     headers = {
         'Authorization': f'Bearer {token}'
     }
-    response = requests.get(url, headers=headers)
+    response = requests.get(usableURL, headers=headers)
 
     if response.status_code == 200:
         data = response.json()
