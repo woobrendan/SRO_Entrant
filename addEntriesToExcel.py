@@ -20,7 +20,7 @@ def addEntriesToExcel():
         entries = fetch_responses(recent_date, series)
 
         if len(entries) == 0:
-            return
+            continue
 
         # Take all entries, covnert answers to dicts, filter
         all_entries = processAllResponses(entries, series)
