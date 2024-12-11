@@ -33,8 +33,8 @@ def getAllId(sheet, series):
 
     if series == 'GR Cup':
         column_id = 'BA'
-    # elif series == 'McLaren':
-    #     column_id = mclaren_headers.headers
+    elif series == 'McLaren':
+        column_id = "BI"
     else:
         column_id = 'BL'
 
@@ -54,8 +54,8 @@ def getMostRecentDate(sheet, series):
 
     if series == 'GR Cup':
         column_id = 'BB'
-    # elif series == 'McLaren':
-    #     column_id = mclaren_headers.headers
+    elif series == 'McLaren':
+        column_id = "BJ"
     else:
         column_id = 'BM'
 
