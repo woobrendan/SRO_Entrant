@@ -11,6 +11,7 @@ from headers import gr_headers, headers, mcl_headers
 def addEntriesToExcel():
     seriesList = ['SRO', "GR Cup", "McLaren"] # add in McLaren
     wb = openpyxl.load_workbook(f'../2025/2025 Vehicle Registrations.xlsx')
+    running_count = 0
 
     for series in seriesList:
         sheet = wb[series]
@@ -39,11 +40,13 @@ def addEntriesToExcel():
             header_title = headers.headers
 
         count = addValuesToExcel(header_title, filtered_entries, sheet)
+        running_count += count
         addCarNums(wb, series, filtered_entries)
 
         print(f'{count} entries have been added to {series} document')
-
-    wb.save(f'../2025/2025 Vehicle Registrations Latest.xlsx')
+        
+    if running_count:
+        wb.save(f'../2025/2025 Vehicle Registrations Latest.xlsx')
 
 
 if __name__ == '__main__':
