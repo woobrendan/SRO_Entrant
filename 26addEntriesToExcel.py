@@ -5,11 +5,11 @@ from Utility.answersToDict import processAllResponses
 from Utility.sortFuncs import filterEntriesById
 from Utility.utility import getAllId, getMostRecentDate, addValuesToExcel
 from Utility.addCarNums import addCarNums
-from headers import gr_headers, headers, mcl_headers
+from headers import gr_headers, headers_2026, mcl_headers
 import json
 
 
-def addEntriesToExcel():
+def addEntriesToExcel26():
     seriesList = [
         'SRO', 
        # "GR Cup", 
@@ -22,7 +22,7 @@ def addEntriesToExcel():
         sheet = wb[series]
 
         # Fetch respones exit if no new respones, if responses process them to own dict, then filter removing duplicate ids
-        recent_date = getMostRecentDate(sheet, series)
+        recent_date = getMostRecentDate(sheet, series, '2026')
         entries = fetch_responses_2026(recent_date, series)
 
         if len(entries) == 0:
@@ -30,7 +30,7 @@ def addEntriesToExcel():
 
         # Take all entries, covnert answers to dicts, filter
         all_entries = processAllResponses(entries, series)
-        existing_ids = getAllId(sheet, series)
+        existing_ids = getAllId(sheet, series, '2026')
         filtered_entries = filterEntriesById(existing_ids, all_entries)
 
 
@@ -42,7 +42,7 @@ def addEntriesToExcel():
         elif series == 'McLaren':
             header_title = mcl_headers.headers
         else:
-            header_title = headers.headers
+            header_title = headers_2026.headers
 
         count = addValuesToExcel(header_title, filtered_entries, sheet)
         running_count += count
@@ -55,4 +55,4 @@ def addEntriesToExcel():
 
 
 if __name__ == '__main__':
-    addEntriesToExcel()
+    addEntriesToExcel26()
