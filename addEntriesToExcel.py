@@ -17,7 +17,7 @@ def addEntriesToExcel():
         sheet = wb[series]
 
         # Fetch respones exit if no new respones, if responses process them to own dict, then filter removing duplicate ids
-        recent_date = getMostRecentDate(sheet, series)
+        recent_date = getMostRecentDate(sheet, series, '2025')
         entries = fetch_responses(recent_date, series)
 
         if len(entries) == 0:
@@ -25,7 +25,7 @@ def addEntriesToExcel():
 
         # Take all entries, covnert answers to dicts, filter
         all_entries = processAllResponses(entries, series)
-        existing_ids = getAllId(sheet, series)
+        existing_ids = getAllId(sheet, series, '2025')
         filtered_entries = filterEntriesById(existing_ids, all_entries)
 
 
