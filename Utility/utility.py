@@ -28,15 +28,17 @@ def findFirstEmptyRow(sheet):
             return cell.row
 
 
-def getAllId(sheet, series):
+def getAllId(sheet, series, year):
     ids = []
 
-    if series == 'GR Cup':
-        column_id = 'BA'
-    elif series == 'McLaren':
-        column_id = "BI"
-    else:
-        column_id = 'BL'
+    mapping = {
+        "GR Cup": {"2026": "AZ", "2025": "BA"},
+        "McLaren": {"2026": "BG", "2025": "BI"},
+        "SRO": {"2026": "BK", "2025": "BL"}
+    }
+
+    year_key = year if year == "2026" else "2025"
+    column_id = mapping[series][year_key]
 
     column = sheet[column_id]
 
@@ -49,15 +51,18 @@ def getAllId(sheet, series):
     return ids
 
 
-def getMostRecentDate(sheet, series):
+def getMostRecentDate(sheet, series, year):
     submit_dates = []
 
-    if series == 'GR Cup':
-        column_id = 'BB'
-    elif series == 'McLaren':
-        column_id = "BJ"
-    else:
-        column_id = 'BM'
+    mapping = {
+        "GR Cup": {"2026": "BA", "2025": "BB"},
+        "McLaren": {"2026": "BH", "2025": "BJ"},
+        "SRO": {"2026": "BL", "2025": "BM"}
+    }
+
+    year_key = year if year == "2026" else "2025"
+    column_id = mapping[series][year_key]
+
 
     column = sheet[column_id]
 
