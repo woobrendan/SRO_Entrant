@@ -29,7 +29,7 @@ def addEntriesToExcel26():
             continue
 
         # Take all entries, covnert answers to dicts, filter
-        all_entries = processAllResponses(entries, series)
+        all_entries = processAllResponses(entries, series, '2026')
         existing_ids = getAllId(sheet, series, '2026')
         filtered_entries = filterEntriesById(existing_ids, all_entries)
 
