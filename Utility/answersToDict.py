@@ -14,14 +14,14 @@ def process_answer(answer, series, year):
         "SRO": {"2025": headers.header_ids, "2026": headers_2026.header_ids}
     }
 
-    # if series == 'GR Cup':
-    #     header_vals = gr_headers.header_ids
-    # elif series == 'McLaren':
-    #     header_vals = mcl_headers.header_ids
-    # else:
-    #     header_vals = headers.header_ids    
+    if series == 'GR Cup':
+        header_vals = gr_headers.header_ids
+    elif series == 'McLaren':
+        header_vals = mcl_headers.header_ids
+    else:
+        header_vals = headers.header_ids    
 
-    # key = header_vals.get(ans_id, '----Find later------')
+    key = header_vals.get(ans_id, '----Find later------')
     year_key = year if year == "2026" else "2025"
     all_headers = series_headers[series][year_key]
     key = all_headers.get(ans_id, '----Find later------')
@@ -35,7 +35,7 @@ def processAnswersToDict(response, series, year):
     entry = {}
     entry['id'] = response['response_id']
     entry['Submitted_at'] = response['submitted_at']
-    entry['2024 Confirmed Number'] = ''
+    entry['2025 Confirmed Number'] = ''
 
     for answer in response['answers']:
         val = process_answer(answer, series, year)
