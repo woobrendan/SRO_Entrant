@@ -25,8 +25,6 @@ def addEntriesToExcel26():
         recent_date = getMostRecentDate(sheet, series, '2026')
         entries = fetch_responses_2026(recent_date, series)
 
-        # print(json.dumps(entries, indent=4))
-
         if len(entries) == 0:
             continue
 
