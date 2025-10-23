@@ -12,7 +12,7 @@ import json
 def addEntriesToExcel26():
     seriesList = [
         'SRO', 
-       # "GR Cup", 
+        "GR Cup", 
         #"McLaren"
         ] 
     wb = openpyxl.load_workbook(f'../2026/2026 Vehicle Registrations.xlsx')
@@ -24,6 +24,8 @@ def addEntriesToExcel26():
         # Fetch respones exit if no new respones, if responses process them to own dict, then filter removing duplicate ids
         recent_date = getMostRecentDate(sheet, series, '2026')
         entries = fetch_responses_2026(recent_date, series)
+
+        # print(json.dumps(entries, indent=4))
 
         if len(entries) == 0:
             continue
@@ -51,7 +53,7 @@ def addEntriesToExcel26():
         print(f'{count} entries have been added to {series} document')
         
     if running_count:
-        wb.save(f'../2026/2026 Vehicle Registrations Latest.xlsx')
+        wb.save(f'../2026/2026 Vehicle Registrations DNU.xlsx')
 
 
 if __name__ == '__main__':
