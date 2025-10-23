@@ -32,7 +32,7 @@ def getAllId(sheet, series, year):
     ids = []
 
     mapping = {
-        "GR Cup": {"2026": "AZ", "2025": "BA"},
+        "GR Cup": {"2026": "AY", "2025": "BA"},
         "McLaren": {"2026": "BG", "2025": "BI"},
         "SRO": {"2026": "BK", "2025": "BL"}
     }
@@ -55,7 +55,7 @@ def getMostRecentDate(sheet, series, year):
     submit_dates = []
 
     mapping = {
-        "GR Cup": {"2026": "BA", "2025": "BB"},
+        "GR Cup": {"2026": "AZ", "2025": "BB"},
         "McLaren": {"2026": "BH", "2025": "BJ"},
         "SRO": {"2026": "BL", "2025": "BM"}
     }
