@@ -11,8 +11,8 @@ def fetch_responses_2026(date_str, series):
 
     form_ids = {
         'SRO': 'SRO_2026',
-        # 'GR Cup': 'GR_FORM',
-        # 'McLaren': 'MCLAREN',
+        'GR Cup': 'GR_FORM',
+        'McLaren': 'MCLAREN',
     }
 
     form_str = form_ids.get(series)
