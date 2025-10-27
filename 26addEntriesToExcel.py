@@ -6,14 +6,13 @@ from Utility.sortFuncs import filterEntriesById
 from Utility.utility import getAllId, getMostRecentDate, addValuesToExcel
 from Utility.addCarNums import addCarNums
 from headers import gr_headers, headers_2026, mcl_headers
-import json
 
 
 def addEntriesToExcel26():
     seriesList = [
         'SRO', 
         "GR Cup", 
-        #"McLaren"
+        "McLaren"
         ] 
     wb = openpyxl.load_workbook(f'../2026/2026 Vehicle Registrations.xlsx')
     running_count = 0
