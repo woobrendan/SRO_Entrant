@@ -69,8 +69,6 @@ def getMostRecentDate(sheet, series, year):
     for cell in column[1:]:
         if cell.value is not None:
             submit_dates.append(cell.value)
-        else:
-            break
 
     if submit_dates:
         # convert each date string into date obj, get max then return as str
