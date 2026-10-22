@@ -25,9 +25,10 @@ header_ids = {
     'BAGCqZ0a46fI': 'Transponder Number',
     '2ixpVfqzC5cZ': 'Series',
     'qpIxQJlGsU8a': 'Class',  # TC A
-    'VUS8zmSTzlpi': 'Class',    # GT America class
-    'bpJBRPAjHTHA': 'Class',  # GTWC
-    'M1ydodEf082T': 'Class',  # GT4
+    'kY2PpCr2aWfb': 'Class',    # GT America class (choice)
+    # 'bpJBRPAjHTHA': 'Class',  # GTWC
+    '9vBFWxvkZrQj': 'Class',  # GTWC
+    'NAeAzoIiqF85': 'Class',  # GT4
     'ebw8my83CaZJ': '2025 Registered Number',
     'TYApDPz8Okk5': 'Car # First Choice',
     '8GBRbFnL5S3X': 'Car # Second Choice',

@@ -1,5 +1,5 @@
 from headers.gr_headers import gr_num_headers
-from headers.headers import sro_num_headers
+from headers.headers_27 import sro_num_headers
 from headers.mcl_headers import mcl_num_headers
 from Utility.sortFuncs import sortEntryNumberTracking
 from Utility.utility import addValuesToExcel
@@ -18,7 +18,7 @@ def addCarNums(wb, series, all_entries):
     # handle GR and McLaren Nums
     else:
         seriesTab = 'GR Nums' if series == 'GR Cup' else 'MCL Nums'
-        num_head = gr_num_headers if series == 'Gr Cup' else mcl_num_headers
+        num_head = gr_num_headers if series == 'GR Cup' else mcl_num_headers
         sheet = wb[seriesTab]
 
         entries = entryDict[seriesTab]

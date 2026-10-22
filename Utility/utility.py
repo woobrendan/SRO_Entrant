@@ -55,12 +55,12 @@ def getMostRecentDate(sheet, series, year):
     submit_dates = []
 
     mapping = {
-        "GR Cup": {"2026": "AZ", "2025": "BB"},
-        "McLaren": {"2026": "BH", "2025": "BJ"},
-        "SRO": {"2026": "BL", "2025": "BM"}
+        "GR Cup": {"2027":"AT", "2026": "AZ", "2025": "BB"},
+        # "McLaren": {"2026": "BH", "2025": "BJ"},
+        "SRO": {"2027":"BE", "2026": "BL", "2025": "BM"}
     }
 
-    year_key = year if year == "2026" else "2025"
+    year_key = year if year == "2026" else "2027"
     column_id = mapping[series][year_key]
 
 
